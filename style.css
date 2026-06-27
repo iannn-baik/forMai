@@ -1,0 +1,570 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ffeef2 0%, #ffd1dc 100%);
+    color: #4a2834; 
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    background: transparent url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=2070') no-repeat center center;
+    background-size: cover;
+    opacity: 0.05; 
+    z-index: 0;
+    filter: invert(1); 
+}
+
+.section {
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    text-align: center;
+    z-index: 1;
+    display: none; 
+}
+
+.section.active {
+    display: block;
+    animation: fadeIn 1.2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    color: #7d4457; 
+    text-shadow: 0 2px 10px rgba(255, 182, 193, 0.3);
+}
+
+p.subtitle {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #a36479; 
+    margin-bottom: 40px;
+}
+
+.btn {
+    background: transparent;
+    border: 1px solid #ff85a2;
+    color: #7d4457;
+    padding: 12px 30px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.4s ease;
+    margin-top: 30px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(255, 133, 162, 0.15);
+}
+
+.btn:hover {
+    background: #ff85a2; 
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(255, 133, 162, 0.4);
+    transform: scale(1.05);
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.time-box {
+    background: rgba(255, 255, 255, 0.6); 
+    border: 1px solid rgba(255, 133, 162, 0.25);
+    padding: 20px;
+    border-radius: 15px;
+    min-width: 90px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2);
+}
+
+.time-box span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: 'Cinzel', serif;
+    color: #7d4457;
+}
+
+.time-box label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a36479;
+    font-weight: 600;
+}
+
+.gift-box {
+    font-size: 5rem;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    display: inline-block;
+    margin: 40px 0;
+    user-select: none;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+.polaroid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.polaroid {
+    background: #ffffff; 
+    padding: 10px 10px 25px 10px;
+    box-shadow: 0 10px 25px rgba(163, 100, 121, 0.15);
+    transform: rotate(-3deg);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(4deg);
+}
+
+.polaroid:hover {
+    transform: scale(1.08) rotate(0deg);
+    z-index: 5;
+    box-shadow: 0 15px 35px rgba(163, 100, 121, 0.25);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.letter-box {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 133, 162, 0.2);
+    color: #4a2834;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: left;
+    line-height: 1.8;
+    max-height: 400px;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(163, 100, 121, 0.1);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(163, 100, 121, 0.2);
+    border: 4px solid #ffffff;
+}
+
+.video-wrapper iframe, .video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.heart-flake {
+    position: fixed;
+    top: -10vh;
+    font-size: 1.2rem;
+    color: #ff85a2;
+    pointer-events: none;
+    z-index: 9999;
+    user-select: none;
+    animation: fall linear forwards;
+    opacity: 0.75;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.75; }
+    50% { opacity: 0.6; }
+    100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
+}
+
+.gift-container {
+    position: relative;
+    width: 200px; 
+    height: 180px;
+    margin: 40px auto;
+    cursor: pointer;
+    user-select: none;
+}
+
+.gift-lid-img {
+    width: 90%;
+    position: absolute;
+    top: 0; 
+    left: 5%;
+    z-index: 2; 
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
+    animation: floatingLid 2.5s ease-in-out infinite;
+}
+
+.gift-box-img {
+    width: 100%;
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    z-index: 1; 
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+@keyframes floatingLid {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.gift-container.opened .gift-lid-img {
+    animation: none;
+    transform: translateY(-120px) rotate(-25deg) scale(0.8);
+    opacity: 0;
+}
+
+.gift-container.opened .gift-box-img {
+    transform: translateY(60px) scale(0.7);
+    opacity: 0;
+}
+
+.burst-particle {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    z-index: 9999;
+    user-select: none;
+    animation: blast 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes blast {
+    0% { transform: translate(0, 0) scale(0.5) rotate(0deg); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(1.2) rotate(var(--r)); opacity: 0; }
+}
+
+.video-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; 
+    width: 100%;
+    max-width: 500px; 
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.video-16-9 {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.video-16-9 video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+video::-webkit-media-controls-panel { width: calc(100% + 30px); }
+video::-webkit-media-controls-timeline { max-width: 95%; }
+video::-webkit-media-controls-toggle-closed-captions-button { display: none !important; }
+video::-internal-media-controls-download-button { display: none !important; }
+
+.polaroid img {
+    filter: grayscale(100%);
+    transition: filter 0.4s ease; 
+}
+
+.polaroid:active img,
+.polaroid:hover img {
+    filter: grayscale(0%);
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 12px; 
+    margin: 30px auto 0 auto;
+    width: 100%;
+    max-width: 400px; 
+    padding: 0 10px;
+}
+
+.btn-group .btn {
+    flex: 1; 
+    margin-top: 0 !important; 
+    height: 46px; 
+    padding: 0 15px !important;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem; 
+    white-space: nowrap; 
+}
+
+.btn-secondary {
+    background: transparent !important; 
+    color: #7d4457 !important;
+    border: 1px solid #ff85a2 !important;
+    box-shadow: 0 4px 10px rgba(255, 133, 162, 0.08) !important;
+}
+
+.btn-secondary:hover {
+    background: #ff85a2 !important; 
+    color: #fff !important;
+    box-shadow: 0 6px 20px rgba(255, 133, 162, 0.4) !important;
+    transform: scale(1.05);
+}
+
+/* 🔥 STYLE INDAH UNTUK POP-UP LIGHTBOX DAN KATA KATA (SMOOTH TRANSITION) */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(74, 40, 52, 0.85); 
+    backdrop-filter: blur(8px); 
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox.show {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    background: #ffffff;
+    padding: 15px 15px 30px 15px;
+    border-radius: 4px; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    max-width: 85%;
+    width: 360px; 
+    text-align: center;
+    transform: scale(0.7) translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lightbox.show .lightbox-content {
+    transform: scale(1) translateY(0);
+}
+
+.lightbox-content img {
+    width: 100%;
+    height: auto;
+    max-height: 65vh;
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+
+.lightbox-caption {
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #4a2834;
+    line-height: 1.6;
+    font-weight: 400;
+    padding: 0 5px;
+    text-align: left; 
+    font-style: italic;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: transform 0.2s;
+    user-select: none;
+}
+
+.lightbox-close:hover {
+    transform: scale(1.2);
+}
+
+/* --- PLAYLIST VIDEO CUSTOM (KOLOM VERTIKAL & 16:9) --- */
+.video-card-custom {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+/* TOMBOL PLAY KUSTOM DI TENGAH VIDEO */
+.video-custom-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 133, 162, 0.85);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 10;
+    
+   
+    pointer-events: none; 
+}
+
+/* Saat video berjalan, tombol play kustom otomatis sembunyi halus */
+.video-card-custom.playing .video-custom-play-btn {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+}
+
+/* POSISI: Taruh di paling bawah file style.css */
+
+/* CONTAINER TUMPUKAN KARTU WISHES */
+.wish-stack-container {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    min-height: 280px;
+    margin: 0 auto 50px auto;
+}
+
+/* POSISI: Cari dan ganti bagian ini di style.css kamu */
+
+/* STYLE KARTU WISHES DENGAN TRANSISI PREMIUM & SMOOTH */
+.wish-card {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 133, 162, 0.25);
+    border-radius: 24px; /* Sudut sedikit lebih membulat biar estetik */
+    padding: 30px;
+    
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    user-select: none;
+    transform-origin: center bottom;
+    
+    /* 🌟 TRANSISI DIUBAH MENJADI TIMING FUNCTION YANG LEBIH KENYAL & LEMBUT 🌟 */
+    transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.45s ease;
+}
+
+.wish-card:active {
+    cursor: grabbing;
+}
+
+/* EFEK GRADASI TUMPUKAN LAYER YANG LEBIH HALUS */
+.wish-card:nth-last-child(1) { transform: scale(1) translateY(0); z-index: 4; opacity: 1; }
+.wish-card:nth-last-child(2) { transform: scale(0.95) translateY(10px); z-index: 3; opacity: 0.85; }
+.wish-card:nth-last-child(3) { transform: scale(0.88) translateY(20px); z-index: 2; opacity: 0.65; }
+
+/* POSISI: Letakkan di paling bawah file style.css kamu */
+
+/* CONTAINER AREA BOX KOMENTAR */
+.comment-box-container {
+    width: 100%;
+    max-width: 340px;
+    margin: 20px auto 10px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* KOTAK INPUT TEXTAREA */
+#mai-reply {
+    width: 100%;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 133, 162, 0.4);
+    border-radius: 14px;
+    padding: 12px 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: #4a2834;
+    resize: none;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(163, 100, 121, 0.05);
+    transition: all 0.3s ease;
+}
+
+#mai-reply:focus {
+    background: #fff;
+    border-color: #ff85a2;
+    box-shadow: 0 4px 20px rgba(255, 133, 162, 0.2);
+}
+
+/* TOMBOL KHUSUS KIRIM WA */
+.btn-send-wa {
+    width: 100%;
+    margin-top: 0 !important;
+    background: #ff85a2 !important;
+    color: #fff !important;
+    border: none !important;
+    font-size: 0.8rem !important;
+    height: 42px;
+}
+
+.btn-send-wa:hover {
+    background: #e66b88 !important;
+    box-shadow: 0 5px 15px rgba(255, 133, 162, 0.4) !important;
+}

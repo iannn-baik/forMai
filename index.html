@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Special Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <audio id="bg-music" src="lagu.mp3" loop></audio>
+
+    <div id="step-countdown" class="section active">
+        <p class="subtitle">✧ MENGHITUNG HARI ✧</p>
+        <h1>Her Special Day<br>is Coming</h1>
+        <p class="subtitle">Sesuatu yang indah(biasa aja si) sedang menunggumu</p>
+        
+        <div class="countdown-container">
+            <div class="time-box"><span id="days">00</span><label>Hari</label></div>
+            <div class="time-box"><span id="hours">00</span><label>Jam</label></div>
+            <div class="time-box"><span id="minutes">00</span><label>Menit</label></div>
+            <div class="time-box"><span id="seconds">00</span><label>Detik</label></div>
+        </div>
+
+        <div id="countdown-trigger" style="display: none;">
+            <button class="btn" onclick="startExperience('step-gift')">Open</button>
+        </div>
+    </div>
+
+    <div id="step-gift" class="section">
+        <p class="subtitle">✦ ADA SESUATU UNTUKMU ✦</p>
+        
+        <div class="gift-container" onclick="openTheGift()">
+            <img src="gambar/tutup.png" alt="Tutup Kado" class="gift-lid-img">
+            <img src="gambar/kotak.png" alt="Kotak Kado" class="gift-box-img">
+        </div>
+        
+        <p style="font-size: 0.85rem; letter-spacing: 1px; margin-top: 20px;">Klik kadonya untuk membuka...</p>
+    </div>
+
+    <div id="step-polaroid" class="section">
+        <p class="subtitle">✦ A LETTER FOR YOU ✦</p>
+        <h1>Your Special Day</h1>
+        <p class="subtitle">Klik fotonya</p>
+
+        <div class="polaroid-grid">
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar1.jpeg" alt="Memory 1" data-caption="orang lagi kesel dia malah jeprat jepret"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar2.jpeg" alt="Memory 2" data-caption="so imut"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar3.jpeg" alt="Memory 3" data-caption="boba gw jangan dihabisin"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar4.jpeg" alt="Memory 4" data-caption="ini apa kok tiba tiba ada di galeri"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar5.jpeg" alt="Memory 5" data-caption="kalo gampang nangis jangan nonton film tentang keluarga"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar6.jpeg" alt="Memory 6" data-caption="lucu si tapi ah males"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar7.jpeg" alt="Memory 7" data-caption="ini lucu tapi akunya blm siap(gamau foto)"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar8.jpeg" alt="Memory 8" data-caption="ini apa si, ada aja di galeri"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar9.jpeg" alt="Memory 9" data-caption="lucu juga, gw"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar10.jpeg" alt="Memory 10" data-caption="wkwkwkww ga jadi main"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar11.jpeg" alt="Memory 11" data-caption="bagus juga gambaranlu"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar12.jpeg" alt="Memory 12" data-caption="minimal gausah ngambek kalo kalah"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar13.jpeg" alt="Memory 13" data-caption="ku tunggu kamu sukses"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar14.jpeg" alt="Memory 14" data-caption="ini kapan, aku lupa"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar15.jpeg" alt="Memory 15" data-caption="jamnya kurang"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar16.jpeg" alt="Memory 15" data-caption="muka bro setelah uas algo"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar17.jpeg" alt="Memory 15" data-caption="KALO MAKAN TU DIHABISINN!!!!"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar18.jpeg" alt="Memory 15" data-caption="aku tau kamu princess, TAPI BANTU LAH DIKIT"></div>
+            <div class="polaroid" onclick="openLightbox(this)"><img src="gambar/gambar19.jpeg" alt="Memory 15" data-caption="PROUD OF YOUU, kerennnn udah bisaaa. nanti aku jadi backend nya"></div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-secondary" onclick="nextStep('step-gift')">Back</button>
+            <button class="btn" onclick="nextStep('step-letter')">Read My Letter</button>
+        </div>
+    </div>
+
+    <div id="step-letter" class="section">
+        <h1>Happy Birthday</h1>
+        <p class="subtitle">HAPPY BIRTHDAY MAI</p>
+        
+        <div id="typing-letter" class="letter-box"></div>
+
+        <div class="btn-group">
+            <button class="btn btn-secondary" onclick="nextStep('step-polaroid')">Back</button>
+            <button class="btn" onclick="nextStep('step-memories')">Mini Clips</button>
+        </div>
+    </div>
+
+    <div id="step-memories" class="section">
+        <h1>Mini Clips</h1>
+        <p class="subtitle">✧ klik video untuk putar / jeda ✧<br> This video is just a small reminder of how grateful i am to have u. for the laughs, the latke talks, the growing, the changing, and everything we've been through</p>
+
+        <div class="video-list-container">
+            <div class="video-card-custom" onclick="togglePlayVideo(this)">
+                <div class="video-16-9">
+                    <video src="pidio/pidio1.mp4" muted playsinline></video>
+                </div>
+                <div class="video-custom-play-btn">▶</div>
+            </div>
+            <div class="video-card-custom" onclick="togglePlayVideo(this)">
+                <div class="video-16-9">
+                    <video src="pidio/pidio2.mp4" muted playsinline></video>
+                </div>
+                <div class="video-custom-play-btn">▶</div>
+            </div>
+            <div class="video-card-custom" onclick="togglePlayVideo(this)">
+                <div class="video-16-9">
+                    <video src="pidio/pidio3.mp4" muted playsinline></video>
+                </div>
+                <div class="video-custom-play-btn">▶</div>
+            </div>
+            <div class="video-card-custom" onclick="togglePlayVideo(this)">
+                <div class="video-16-9">
+                    <video src="pidio/pidio4.mp4" muted playsinline></video>
+                </div>
+                <div class="video-custom-play-btn">▶</div>
+            </div>
+            <div class="video-card-custom" onclick="togglePlayVideo(this)">
+                <div class="video-16-9">
+                    <video src="pidio/pidio5.mp4" muted playsinline></video>
+                </div>
+                <div class="video-custom-play-btn">▶</div>
+            </div>
+            <div class="video-card-custom" onclick="togglePlayVideo(this)">
+                <div class="video-16-9">
+                    <video src="pidio/pidio6.mp4" muted playsinline></video>
+                </div>
+                <div class="video-custom-play-btn">▶</div>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-secondary" onclick="nextStep('step-letter')">Back</button>
+            <button class="btn" onclick="nextStep('step-final')">Birthday Wishes</button>
+        </div>
+    </div>
+
+    <div id="step-final" class="section">
+        <h1 style="font-size: 2.5rem;">Birthday Wishes</h1>
+        <p class="subtitle">Geser kartu untuk baca kartu berikutnya</p>
+        
+        <div class="wish-stack-container">
+            <div class="wish-card">
+                <div class="card-content">
+                    <p>i wish u all the best, happiness and love that u deserve</p>
+                </div>
+            </div>
+            <div class="wish-card">
+                <div class="card-content">
+                    <p>may life be gentle with u</p>
+                </div>
+            </div>
+            <div class="wish-card">
+                <div class="card-content">
+                    <p>may your day be as wonderful as you are</p>
+                </div>
+            </div>
+            <div class="wish-card">
+                <div class="card-content">
+                    <p>may ur dreams slowly find their way & may u never forget how loved and capable u're</p>
+                </div>
+            </div>
+            <div class="wish-card">
+                <div class="card-content">
+                    <p>i hope this little gift can make your special day even more beautiful</p>
+                </div>
+            </div>
+            <div class="wish-card">
+                <div class="card-content">
+                    <p>i hope we both win in life and everything that we wish for will soon come true</p>
+                </div>
+            </div>
+            <div class="wish-card">
+                <div class="card-content">
+                    <p>I hope this little gift can make your special day even more beautiful</p>
+                </div>
+            </div>
+            <div class="wish-card">
+                <div class="card-content">
+                    <p>on your special day, aku berharap kamu selalu diberi kesehatan, dimudahkan dalam setiap hal, and surrounded by love and positivity. semoga semua yang kamu harapkan, slowly comes true, one by one.</p>
+                </div>
+            </div>
+            <div class="wish-card">
+                <div class="card-content">
+                    <p>haiii maii</p>
+                </div>
+            </div>
+        </div>
+        <!-- AREA BOX KOMENTAR DIALIKKAN KE INSTAGRAM -->
+        <div class="comment-box-container">
+            <textarea id="mai-reply" placeholder="Tulis balasan atau apapun itu di sini..."></textarea>
+            <!-- 🌟 Mengubah fungsi pemicu menjadi sendToInstagram() -->
+            <button class="btn btn-send-wa" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;" onclick="sendToInstagram()">
+                Kirim Lewat Ig
+            </button>
+        </div>
+
+        <button class="btn" style="margin-top: 10px;" onclick="restart()">Replay From Start</button>
+    </div>
+
+    <div id="custom-lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Enlarged Photo">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
