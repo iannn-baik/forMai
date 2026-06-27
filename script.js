@@ -287,26 +287,35 @@ function initWishCards() {
 function sendToInstagram() {
     const replyText = document.getElementById('mai-reply').value;
     
-    // Validasi jika Mai belum mengetik apa pun
+    // 🌟 FIX 1: Ganti alert validasi kosong dengan SweetAlert bergaya "Ian says"
     if (!replyText.trim()) {
-        alert("tulis dulu kocakkkkk");
+        Swal.fire({
+            title: 'WOII',
+            text: 'Tulis dulu kocakkkkkk',
+            icon: 'warning',
+            confirmButtonColor: '#ff85a2'
+        });
         return;
     }
 
     const igUsername = "iann_baikkk"; 
+    const finalMessage = `${replyText}\n\n— Ini pesan dari sana —`;
 
-    // 🌟 MENYUSUN PESAN DENGAN DEFAULT FOOTER OTOMATIS 🌟
-    const finalMessage = `${replyText}\n\n— ini pesan dari sonoan itulah pokoknya —`;
-
-    // 1. Teks yang sudah digabung otomatis disalin ke clipboard HP/Laptop
+    // 1. Teks ucapan otomatis disalin ke clipboard HP/Laptop
     navigator.clipboard.writeText(finalMessage).then(() => {
-        alert("teks otomatis tersalin! lu tempel sendiri trs kirim ke DM y");
         
-        // 2. Tembak link langsung menuju ke KOLOM OBROLAN DM akun kamu
-        const igDMLink = `https://www.instagram.com/iann_baikkk?igsh=aHlzMmZmcHQ5enRy`;
-        
-        // 3. Buka halaman DM
-        window.open(igDMLink, '_blank');
+        // 🌟 FIX 2: Ganti alert sukses salin dengan SweetAlert bergaya "Iyan says"
+        Swal.fire({
+            title: 'P',
+            text: 'Teks udah kesalin ke clipboard, kirim sendiri lewat DM, gamau yaudah',
+            icon: 'success',
+            confirmButtonColor: '#ff85a2'
+        }).then(() => {
+            // 2. Buka halaman DM setelah user klik OK di pop-up
+            const igDMLink = `https://www.instagram.com/iann_baikkk?igsh=aHlzMmZmcHQ5enRy`;
+            window.open(igDMLink, '_blank');
+        });
+
     }).catch(err => {
         console.error('Gagal menyalin teks: ', err);
         window.open(`https://www.instagram.com/iann_baikkk?igsh=aHlzMmZmcHQ5enRy`, '_blank');
