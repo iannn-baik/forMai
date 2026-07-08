@@ -203,20 +203,34 @@ p.subtitle {
 
 .heart-flake {
     position: fixed;
-    top: -10vh;
-    font-size: 1.2rem;
-    color: #ff85a2;
+    top: -5vh;
+    display: block !important; 
+    background-color: #ffb6c1; 
     pointer-events: none;
-    z-index: 9999;
+    z-index: 99999 !important; 
     user-select: none;
     animation: fall linear forwards;
-    opacity: 0.75;
+    opacity: 0.8;
+    border-radius: 2px;
 }
 
+.heart-flake:nth-child(2n) { background-color: #ff85a2; }
+.heart-flake:nth-child(3n) { background-color: #ffd1dc; }
+.heart-flake:nth-child(4n) { background-color: #ffc0cb; }
+
 @keyframes fall {
-    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.75; }
-    50% { opacity: 0.6; }
-    100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
+    0% { 
+        top: -5vh;
+        opacity: 0.8; 
+    }
+    50% { 
+        opacity: 0.6; 
+    }
+    100% { 
+        top: 105vh;
+        opacity: 0; 
+        transform: translateY(105vh) rotate(720deg); 
+    }
 }
 
 .gift-container {
@@ -358,7 +372,7 @@ video::-internal-media-controls-download-button { display: none !important; }
     transform: scale(1.05);
 }
 
-/* 🔥 STYLE INDAH UNTUK POP-UP LIGHTBOX DAN KATA KATA (SMOOTH TRANSITION) */
+
 .lightbox {
     display: none;
     position: fixed;
@@ -432,7 +446,7 @@ video::-internal-media-controls-download-button { display: none !important; }
     transform: scale(1.2);
 }
 
-/* --- PLAYLIST VIDEO CUSTOM (KOLOM VERTIKAL & 16:9) --- */
+
 .video-card-custom {
     background-color: #fff;
     padding: 10px;
@@ -444,7 +458,7 @@ video::-internal-media-controls-download-button { display: none !important; }
     margin-bottom: 25px;
 }
 
-/* TOMBOL PLAY KUSTOM DI TENGAH VIDEO */
+
 .video-custom-play-btn {
     position: absolute;
     top: 50%;
@@ -467,15 +481,13 @@ video::-internal-media-controls-download-button { display: none !important; }
     pointer-events: none; 
 }
 
-/* Saat video berjalan, tombol play kustom otomatis sembunyi halus */
+
 .video-card-custom.playing .video-custom-play-btn {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.7);
 }
 
-/* POSISI: Taruh di paling bawah file style.css */
 
-/* CONTAINER TUMPUKAN KARTU WISHES */
 .wish-stack-container {
     position: relative;
     width: 100%;
@@ -484,9 +496,7 @@ video::-internal-media-controls-download-button { display: none !important; }
     margin: 0 auto 50px auto;
 }
 
-/* POSISI: Cari dan ganti bagian ini di style.css kamu */
 
-/* STYLE KARTU WISHES DENGAN TRANSISI PREMIUM & SMOOTH */
 .wish-card {
     position: absolute;
     width: 100%;
@@ -505,7 +515,6 @@ video::-internal-media-controls-download-button { display: none !important; }
     user-select: none;
     transform-origin: center bottom;
     
-    /* 🌟 TRANSISI DIUBAH MENJADI TIMING FUNCTION YANG LEBIH KENYAL & LEMBUT 🌟 */
     transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.45s ease;
 }
 
@@ -513,58 +522,7 @@ video::-internal-media-controls-download-button { display: none !important; }
     cursor: grabbing;
 }
 
-/* EFEK GRADASI TUMPUKAN LAYER YANG LEBIH HALUS */
+
 .wish-card:nth-last-child(1) { transform: scale(1) translateY(0); z-index: 4; opacity: 1; }
 .wish-card:nth-last-child(2) { transform: scale(0.95) translateY(10px); z-index: 3; opacity: 0.85; }
 .wish-card:nth-last-child(3) { transform: scale(0.88) translateY(20px); z-index: 2; opacity: 0.65; }
-
-/* POSISI: Letakkan di paling bawah file style.css kamu */
-
-/* CONTAINER AREA BOX KOMENTAR */
-.comment-box-container {
-    width: 100%;
-    max-width: 340px;
-    margin: 20px auto 10px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* KOTAK INPUT TEXTAREA */
-#mai-reply {
-    width: 100%;
-    height: 90px;
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 133, 162, 0.4);
-    border-radius: 14px;
-    padding: 12px 15px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
-    color: #4a2834;
-    resize: none;
-    outline: none;
-    box-shadow: 0 4px 15px rgba(163, 100, 121, 0.05);
-    transition: all 0.3s ease;
-}
-
-#mai-reply:focus {
-    background: #fff;
-    border-color: #ff85a2;
-    box-shadow: 0 4px 20px rgba(255, 133, 162, 0.2);
-}
-
-/* TOMBOL KHUSUS KIRIM WA */
-.btn-send-wa {
-    width: 100%;
-    margin-top: 0 !important;
-    background: #ff85a2 !important;
-    color: #fff !important;
-    border: none !important;
-    font-size: 0.8rem !important;
-    height: 42px;
-}
-
-.btn-send-wa:hover {
-    background: #e66b88 !important;
-    box-shadow: 0 5px 15px rgba(255, 133, 162, 0.4) !important;
-}

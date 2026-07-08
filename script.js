@@ -1,4 +1,4 @@
-const targetDate = new Date(2026, 5, 9, 0, 0, 0).getTime(); 
+const targetDate = new Date(2026, 6, 9, 0, 0, 0).getTime(); 
 
 const countdownInterval = setInterval(function() {
     const now = new Date().getTime();
@@ -27,8 +27,7 @@ const countdownInterval = setInterval(function() {
 
 }, 1000);
 
-// 🔥 FIX: Tanda petik sudah dibenerin jadi backtick di awal dan akhir
-const letterText = `happy level-up dayyy make a wish another year down, and you're just getting better. i hope you stay healthy and keep crushing your goals. whatever you want out of life, i hope it finds its way to you.
+const letterText = `happy level up dayyy make a wish another year down, and you're just getting better. i hope you stay healthy and keep crushing your goals. whatever you want out of life, i hope it finds its way to you.
 
 shoutout to you for being so resilient. you’ve been through a lot, and theres still a whole journey ahead. yeahh, adulting brings more hurdles, but you’re surrounded by so much love. embrace the ups and downs and just enjoy the ride.
 
@@ -118,20 +117,29 @@ function nextStep(nextStepId) {
 function restart() { location.reload(); }
 
 function createHeartFlake() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart-flake");
-    const shapes = ["❤️", "⭐", "✨", "🌸", '🎈'];
-    heart.innerText = shapes[Math.floor(Math.random() * shapes.length)];
-    heart.style.left = Math.random() * 100 + "vw";
-    const size = Math.random() * 0.8 + 0.6; 
-    heart.style.fontSize = size + "rem";
-    const duration = Math.random() * 4 + 3; 
-    heart.style.animationDuration = duration + "s";
-    document.body.appendChild(heart);
-    setTimeout(() => { heart.remove(); }, duration * 1000);
-}
-setInterval(createHeartFlake, 700);
+    const flake = document.createElement("div");
+    flake.classList.add("heart-flake"); 
+    flake.style.left = Math.random() * 100 + "vw";
+    
 
+    const size = Math.random() * 8 + 8; 
+    flake.style.width = size + "px";
+    flake.style.height = size + "px";
+    
+    const duration = Math.random() * 4 + 3; 
+    flake.style.animationDuration = duration + "s";
+    
+    flake.style.transform = `rotate(${Math.random() * 360}deg)`;
+    
+    document.body.appendChild(flake);
+    
+    setTimeout(() => {
+        flake.remove();
+    }, duration * 1000);
+}
+document.addEventListener("DOMContentLoaded", function() {
+    setInterval(createHeartFlake, 400);
+});
 function openTheGift() {
     const giftContainer = document.querySelector('.gift-container');
     if (giftContainer.classList.contains('opened')) return;
@@ -202,8 +210,6 @@ function togglePlayVideo(containerElement) {
     }
 }
 
-// POSISI: Ganti fungsi initWishCards() di paling bawah script.js kamu dengan ini
-
 function initWishCards() {
     const container = document.querySelector('.wish-stack-container');
     const cards = document.querySelectorAll('.wish-card');
@@ -240,7 +246,7 @@ function initWishCards() {
         currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
         const diffX = currentX - startX;
         
-        // 🌟 Diperhalus rotasinya (dikali 0.03) supaya tidak terlalu miring kebawah saat digeser
+
         const rotate = diffX * 0.03;
         const scale = Math.max(1 - Math.abs(diffX) / 2000, 0.95);
         
@@ -253,13 +259,11 @@ function initWishCards() {
         
         const diffX = currentX - startX;
         
-        // 🌟 Transisi kembali/melempar dibuat sangat smooth
         newTopCard.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease';
 
         if (Math.abs(diffX) > 100) {
             const throwDirection = diffX > 0 ? 1 : -1;
             
-            // 🌟 Melempar lurus ke kiri/kanan tanpa melorot ke bawah
             newTopCard.style.transform = `translateX(${throwDirection * 200}px) rotate(${throwDirection * 8}deg) scale(0.95)`;
             newTopCard.style.opacity = '0';
             newTopCard.style.zIndex = '0';
@@ -275,7 +279,6 @@ function initWishCards() {
             }, 450);
 
         } else {
-            // Melenting kembali ke posisi tengah semula
             newTopCard.style.transition = 'transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.2)';
             newTopCard.style.transform = '';
             newTopCard.classList.remove('swiping');
