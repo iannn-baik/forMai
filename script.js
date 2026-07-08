@@ -28,9 +28,9 @@ const countdownInterval = setInterval(function() {
 }, 1000);
 
 // 🔥 FIX: Tanda petik sudah dibenerin jadi backtick di awal dan akhir
-const letterText = `happy level-up dayyy make a wish another year down, and you're just getting better. I hope you stay healthy and keep crushing your goals. whatever you want out of life, i hope it finds its way to you.
+const letterText = `happy level-up dayyy make a wish another year down, and you're just getting better. i hope you stay healthy and keep crushing your goals. whatever you want out of life, i hope it finds its way to you.
 
-shoutout to you for being so resilient. you’ve been through a lot, and theres still a whole journey ahead. Yeah, adulting brings more hurdles, but you’re surrounded by so much love. embrace the ups and downs and just enjoy the ride.
+shoutout to you for being so resilient. you’ve been through a lot, and theres still a whole journey ahead. yeahh, adulting brings more hurdles, but you’re surrounded by so much love. embrace the ups and downs and just enjoy the ride.
 
 wishing you endless happiness from here on out. may all your manifestations come true. happy birthdayy thanks for holding it together even when it was tough. keep staying strong, vibrant, and happy`;
 
@@ -281,43 +281,4 @@ function initWishCards() {
             newTopCard.classList.remove('swiping');
         }
     }
-}
-// POSISI: Ganti fungsi sendToInstagram() paling bawah di script.js dengan ini
-
-function sendToInstagram() {
-    const replyText = document.getElementById('mai-reply').value;
-    
-    // 🌟 FIX 1: Ganti alert validasi kosong dengan SweetAlert bergaya "Ian says"
-    if (!replyText.trim()) {
-        Swal.fire({
-            title: 'WOII',
-            text: 'Tulis dulu kocakkkkkk',
-            icon: 'warning',
-            confirmButtonColor: '#ff85a2'
-        });
-        return;
-    }
-
-    const igUsername = "iann_baikkk"; 
-    const finalMessage = `${replyText}\n\n— Ini pesan dari sana —`;
-
-    // 1. Teks ucapan otomatis disalin ke clipboard HP/Laptop
-    navigator.clipboard.writeText(finalMessage).then(() => {
-        
-        // 🌟 FIX 2: Ganti alert sukses salin dengan SweetAlert bergaya "Iyan says"
-        Swal.fire({
-            title: 'P',
-            text: 'Teks udah kesalin ke clipboard, kirim sendiri lewat DM, gamau yaudah',
-            icon: 'success',
-            confirmButtonColor: '#ff85a2'
-        }).then(() => {
-            // 2. Buka halaman DM setelah user klik OK di pop-up
-            const igDMLink = `https://www.instagram.com/iann_baikkk?igsh=aHlzMmZmcHQ5enRy`;
-            window.open(igDMLink, '_blank');
-        });
-
-    }).catch(err => {
-        console.error('Gagal menyalin teks: ', err);
-        window.open(`https://www.instagram.com/iann_baikkk?igsh=aHlzMmZmcHQ5enRy`, '_blank');
-    });
 }
